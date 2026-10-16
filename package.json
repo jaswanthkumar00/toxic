@@ -1,0 +1,20 @@
+{
+  "name": "skillforge-practical-readiness",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n API,WEB -c blue,green \"python -m uvicorn backend.main:app --reload --port 8000\" \"npm --workspace frontend run dev\"",
+    "dev:api": "python -m uvicorn backend.main:app --reload --port 8000",
+    "dev:web": "npm --workspace frontend run dev",
+    "build": "npm --workspace frontend run build",
+    "preview:public": "cloudflared tunnel --url http://localhost:5173",
+    "seed": "python -m backend.seed"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
