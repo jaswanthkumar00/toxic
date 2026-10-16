@@ -110,7 +110,7 @@ Connect/sync the Render Blueprint so Render automatically deploys backend commit
 - `VERCEL_ORG_ID`
 - `VERCEL_PROJECT_ID`
 
-The workflow at `.github/workflows/ci-cd.yml` runs the API tests and frontend production build on pull requests and pushes to `main`. Successful pushes to `main` deploy the frontend to Vercel. Pull requests run validation only.
+The workflow at `.github/workflows/ci-cd.yml` runs the API tests and frontend production build on pull requests and pushes to `main`. Successful pushes to `main` deploy the frontend to Vercel when all three Vercel secrets are configured; otherwise, deployment is skipped with a warning while validation still succeeds. Pull requests run validation only.
 
 ## Data model and implementation notes
 
